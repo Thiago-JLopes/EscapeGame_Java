@@ -18,14 +18,23 @@ public class EscapeGame {
 //-------------------------------------------------------------------------------
         Scanner teclado = new Scanner(System.in);
         String opcaoModoJogo = "0";
-
+        Tabuleiro novoTabuleiro;
         System.out.println("Bem vindo ao Escape Game!");
         System.out.println("Escolha o nível de dificuldade: ");
         System.out.println("0 - Fácil\n1 - Médio\n2 - Díficil");
-        
-        Tabuleiro novoTabuleiro = new TabuleiroFacil();
-        
-        novoTabuleiro.leJogada();
+
+        opcaoModoJogo = teclado.nextLine();
+
+        if (opcaoModoJogo.equals("1")) {
+            novoTabuleiro = new TabuleiroFacil();
+            novoTabuleiro.leJogada();
+        } else if(opcaoModoJogo.equals("2")) {
+            
+        } else if (opcaoModoJogo.equals("3")) {
+            
+        } else {
+            System.out.println("opção inválida!");
+        }
 
     }
 }
