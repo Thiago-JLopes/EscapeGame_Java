@@ -15,9 +15,6 @@ public class TabuleiroFacil extends Tabuleiro {
     public TabuleiroFacil() {
         this.numBombas = 12;
         this.jogadasRealizadas = new ArrayList<>();
-        this.tabuleiro = new String[10][10];
-        
-        InicializarTabuleiro();
     }
 
 }
