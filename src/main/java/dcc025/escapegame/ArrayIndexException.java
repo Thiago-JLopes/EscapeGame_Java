@@ -8,9 +8,9 @@ package dcc025.escapegame;
  *
  * @author thiago
  */
-public class OpcaoException extends Exception{
+public class ArrayIndexException extends Exception{
 
-    public OpcaoException() {
+    public ArrayIndexException() {
     }
     
 }
