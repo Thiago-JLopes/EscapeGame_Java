@@ -19,7 +19,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>fully.qualified.MainClass</mainClass>
+                            <mainClass>dcc025.escapegame.EscapeGame</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
