@@ -114,15 +114,109 @@ public abstract class Tabuleiro {
         this.jogadasRealizadas.add("(" + jogada[0] + ", " + jogada[1] + ")");
         String direcao = jogada[0];
         int deslocamento = Integer.parseInt(jogada[1]);
-        int posicaoD = 0;
-        
-        
-       
+        int n = 0;
+        int i = 0;
+
+        //Deslocamento para direita
+        if (direcao.equals("d")) {
+            n = getpY();
+            i = getpY();
+            while (n < deslocamento + i) {
+                if (Tabuleiro.tabuleiro[getpX()][n].equals(" B ")) {
+                    Tabuleiro.tabuleiro[getpX()][n] = " X ";
+                    Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+                    setpY(n);
+                    break;
+                } else if (Tabuleiro.tabuleiro[getpX()][n].equals(" S ")) {
+                    Tabuleiro.tabuleiro[getpX()][n] = " -- ";
+                    Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+                    setpY(n);
+                    break;
+                }
+                n++;
+            }
+            Tabuleiro.tabuleiro[getpX()][i+deslocamento] = " P ";
+            Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+            setpY(i+deslocamento);
+        } else if (direcao.equals("e")) { //Deslocamento para esquerda
+            n = getpY();
+            while (n > getpY() - deslocamento) {
+                if (Tabuleiro.tabuleiro[getpX()][n].equals(" B ")) {
+                    Tabuleiro.tabuleiro[getpX()][n] = " X ";
+                    Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+                    setpY(n);
+                    break;
+                } else if (Tabuleiro.tabuleiro[getpX()][n].equals(" S ")) {
+                    Tabuleiro.tabuleiro[getpX()][n] = " -- ";
+                    Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+                    setpY(n);
+                    break;
+                } else {
+                    Tabuleiro.tabuleiro[getpX()][n] = " P ";
+                    Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+                    setpY(n);
+                }
+                n--;
+            }
+        } else if (direcao.equals("c")) {
+            n = getpX();
+            while (n > getpX() - deslocamento) {
+                if (Tabuleiro.tabuleiro[n][getpY()].equals(" B ")) {
+                    Tabuleiro.tabuleiro[n][getpY()] = " X ";
+                    Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+                    setpX(n);
+                    break;
+                } else if (Tabuleiro.tabuleiro[n][getpY()].equals(" S ")) {
+                    Tabuleiro.tabuleiro[n][getpY()] = " -- ";
+                    Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+                    setpX(n);
+                    break;
+                } else {
+                    Tabuleiro.tabuleiro[n][getpY()] = " P ";
+                    Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+                    setpX(n);
+                }
+                n--;
+            }
+        } else {
+            n = getpX();
+            while (n < deslocamento) {
+                if (Tabuleiro.tabuleiro[n][getpY()].equals(" B ")) {
+                    Tabuleiro.tabuleiro[n][getpY()] = " X ";
+                    Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+                    setpX(n);
+                    break;
+                } else if (Tabuleiro.tabuleiro[n][getpY()].equals(" S ")) {
+                    Tabuleiro.tabuleiro[n][getpY()] = " -- ";
+                    Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+                    setpX(n);
+                    break;
+                } else {
+                    Tabuleiro.tabuleiro[n][getpY()] = " P ";
+                    Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+                    setpX(n);
+                }
+                n++;
+            }
+        }
 
     }
-    
 
-    public boolean fimDejogo(String s) {
-        return s.equals(" B ") || s.equals("S");
+    public boolean fimDejogo() {
+        switch (Tabuleiro.tabuleiro[getpX()][getpX()]) {
+            case " P ":
+                return false;
+            case " X ":
+                System.out.println("Game Over!");
+                break;
+            case " S ":
+                System.out.println("Parabéns!");
+                break;
+        }
+        System.out.println("Jogadas realizadas: ");
+        for (String jogadasFeitas : jogadasRealizadas) {
+            System.out.println(jogadasFeitas);
+        }
+        return true;
     }
 }

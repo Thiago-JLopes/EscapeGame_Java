@@ -30,10 +30,13 @@ public class EscapeGame {
                 novoTabuleiro = new TabuleiroFacil();
                 novoTabuleiro.InicializarTabuleiro();
                 novoTabuleiro.imprimirSemBombas();
-                System.out.println("");
-                novoTabuleiro.imprimir();
-                jogada = leJogada();
-                //novoTabuleiro.inserirJogada(jogada);
+                do {
+                    novoTabuleiro.imprimir();
+                    jogada = leJogada();
+                    novoTabuleiro.inserirJogada(jogada);
+                    novoTabuleiro.imprimir();
+                    System.out.println("");
+                } while (novoTabuleiro.fimDejogo());
                 break;
             case "1":
                 break;
