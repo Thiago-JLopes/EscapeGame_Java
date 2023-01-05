@@ -126,38 +126,41 @@ public abstract class Tabuleiro {
                     Tabuleiro.tabuleiro[getpX()][n] = " X ";
                     Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
                     setpY(n);
-                    break;
+                    return;
                 } else if (Tabuleiro.tabuleiro[getpX()][n].equals(" S ")) {
                     Tabuleiro.tabuleiro[getpX()][n] = " -- ";
                     Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
                     setpY(n);
-                    break;
+                    return;
                 }
                 n++;
             }
-            Tabuleiro.tabuleiro[getpX()][i+deslocamento] = " P ";
-            Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
-            setpY(i+deslocamento);
+            if (Tabuleiro.tabuleiro[getpX()][i + deslocamento].equals("   ")) {
+
+                Tabuleiro.tabuleiro[getpX()][i + deslocamento] = " P ";
+                Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+                setpY(i + deslocamento);
+            }
         } else if (direcao.equals("e")) { //Deslocamento para esquerda
             n = getpY();
-            while (n > getpY() - deslocamento) {
+            i = getpY();
+            while (n > i - deslocamento) {
                 if (Tabuleiro.tabuleiro[getpX()][n].equals(" B ")) {
                     Tabuleiro.tabuleiro[getpX()][n] = " X ";
                     Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
                     setpY(n);
-                    break;
+                    return;
                 } else if (Tabuleiro.tabuleiro[getpX()][n].equals(" S ")) {
                     Tabuleiro.tabuleiro[getpX()][n] = " -- ";
                     Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
                     setpY(n);
-                    break;
-                } else {
-                    Tabuleiro.tabuleiro[getpX()][n] = " P ";
-                    Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
-                    setpY(n);
+                    return;
                 }
                 n--;
             }
+            Tabuleiro.tabuleiro[getpX()][i - deslocamento] = " P ";
+            Tabuleiro.tabuleiro[getpX()][getpY()] = "   ";
+            setpY(i - deslocamento);
         } else if (direcao.equals("c")) {
             n = getpX();
             while (n > getpX() - deslocamento) {
